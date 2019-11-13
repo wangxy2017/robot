@@ -1,5 +1,6 @@
 package com.wxy.robot.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,11 +12,12 @@ import javax.persistence.*;
  **/
 @Data
 @Entity
+@Table(name = "t_user")
+@AllArgsConstructor
 public class User {
 
     @Id
-    @Column(name = "id", columnDefinition = "bigint(20) comment '主键ID(自增)'")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", columnDefinition = "bigint(20) auto_increment comment '主键ID(自增)'")
     private Long id;
 
     @Column(name = "username", unique = true, nullable = false, columnDefinition = "varchar(64) comment '用户名'")
