@@ -1,38 +1,34 @@
 package com.wxy.robot.controller;
 
+import com.wxy.robot.entity.User;
 import com.wxy.robot.service.UserService;
 import com.wxy.robot.util.ApiResponse;
+import com.wxy.robot.util.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @Author wangxiaoyuan
- * @Date 19-11-13 下午6:03
- * @Description TODO
- **/
 @RestController
-@RequestMapping("/register")
-public class RegisterController {
+@RequestMapping("/login")
+public class LoginController {
 
     @Autowired
     private UserService userService;
 
     /**
-     * 注册
+     * 登录
      *
      * @param username
      * @param password
-     * @param email
      * @return
      */
     @PostMapping
-    public ApiResponse register(String username, String password, String email) {
-        boolean b = userService.saveUser(username, password, email);
-        if (b) {
-            return new ApiResponse(1, "注册成功", null);
+    public ApiResponse login(String username, String password) {
+        User user = userService.queryByUsername(username);
+        if (user != null && user.getPassword().equals(MD5Utils.encrypt(password, user.getSalt()))) {
+            return new ApiResponse(1, "登录成功", null);
         }
-        return new ApiResponse(-1, "注册失败", null);
+        return new ApiResponse(-1, "用户名或密码错误", null);
     }
 }
