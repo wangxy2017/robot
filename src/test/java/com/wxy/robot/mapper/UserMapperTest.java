@@ -22,7 +22,7 @@ public class UserMapperTest {
     private UserMapper userMapper;
 
     @BeforeEach
-    public void insertUser() {
+    public void insert() {
         User user = new User("123", "123", "123@qq.com", "123");
         int save = userMapper.saveUser(user);
         log.info("新增：user = {}", save);
