@@ -9,10 +9,10 @@
 <form action="" id="registerForm">
     <fieldset>
         <legend>注册帐号</legend>
-        用户名：<input type="text" name="username" value="" required><br>
-        密码：<input type="password" name="password" value="" required><br>
-        确认密码：<input type="password" name="confirm_password" value="" required><br>
-        邮箱：<input type="email" name="email" value="" required><br>
+        用户名：<input type="text" name="username" required="required"><br>
+        密码：<input type="password" name="password" required="required"><br>
+        确认密码：<input type="password" name="confirm_password" required="required"><br>
+        邮箱：<input type="email" name="email" required="required"><br>
         <button type="button" onclick="register()">注册</button>
     </fieldset>
 </form>
@@ -20,22 +20,43 @@
 <form action="" id="loginForm">
     <fieldset>
         <legend>登录帐号</legend>
-        用户名：<input type="text" name="username" value="" required><br>
-        密码：<input type="password" name="password" value="" required><br>
+        用户名：<input type="text" name="username" required="required"><br>
+        密码：<input type="password" name="password" required="required"><br>
         <button type="button" onclick="login()">登录</button>
     </fieldset>
 </form>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
 <script>
     // 注册
     function register() {
-
+        $.ajax({
+            url: "/register",
+            type: 'post',
+            data: $('#registerForm').serialize(),
+            success: function (result) {
+                // console.log(result);
+                if (result.code == 1) {
+                    alert("注册成功");
+                }
+            }
+        });
     }
 
     // 登录
     function login() {
-
+        $.ajax({
+            url: "/login",
+            type: 'post',
+            data: $('#loginForm').serialize(),
+            success: function (result) {
+                // console.log(result);
+                if (result.code == 1) {
+                    alert("登录成功");
+                    window.location.href = "/index.html";
+                }
+            }
+        });
     }
 </script>
 </body>
