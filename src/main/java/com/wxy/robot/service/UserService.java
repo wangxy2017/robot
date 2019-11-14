@@ -33,7 +33,7 @@ public class UserService {
         Assert.hasText(password, "the parameter password is required");
         Assert.hasText(email, "the parameter email is required");
         String salt = CodeUtils.randomStr(10);
-        User user = new User(null, username, MD5Utils.encrypt(password, salt), email, salt);
+        User user = new User(username, MD5Utils.encrypt(password, salt), email, salt);
         return userMapper.saveUser(user) > 0;
     }
 

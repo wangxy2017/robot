@@ -6,24 +6,37 @@
 </head>
 <body>
 
-<form action="">
+<form action="" id="registerForm">
     <fieldset>
         <legend>注册帐号</legend>
         用户名：<input type="text" name="username" value="" required><br>
         密码：<input type="password" name="password" value="" required><br>
         确认密码：<input type="password" name="confirm_password" value="" required><br>
         邮箱：<input type="email" name="email" value="" required><br>
-        <button type="button">注册</button>
+        <button type="button" onclick="register()">注册</button>
     </fieldset>
 </form>
 <hr>
-<form action="">
+<form action="" id="loginForm">
     <fieldset>
         <legend>登录帐号</legend>
         用户名：<input type="text" name="username" value="" required><br>
         密码：<input type="password" name="password" value="" required><br>
-        <button type="button">登录</button>
+        <button type="button" onclick="login()">登录</button>
     </fieldset>
 </form>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    // 注册
+    function register() {
+
+    }
+
+    // 登录
+    function login() {
+
+    }
+</script>
 </body>
 </html>

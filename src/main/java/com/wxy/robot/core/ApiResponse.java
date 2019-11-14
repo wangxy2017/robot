@@ -1,4 +1,4 @@
-package com.wxy.robot.util;
+package com.wxy.robot.core;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

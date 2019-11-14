@@ -1,5 +1,6 @@
 package com.wxy.robot.mapper;
 
+import com.wxy.robot.entity.Product;
 import com.wxy.robot.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,28 +17,22 @@ import java.util.List;
  **/
 @Slf4j
 @SpringBootTest
-public class UserMapperTest {
+public class ProductMapperTest {
 
     @Autowired
-    private UserMapper userMapper;
+    private ProductMapper productMapper;
 
     @BeforeEach
-    public void insertUser() {
-        User user = new User("123", "123", "123@qq.com", "123");
-        int save = userMapper.saveUser(user);
-        log.info("新增：user = {}", save);
+    public void insertProduct() {
+        Product product = new Product("123", "123", "123");
+        int save = productMapper.saveProduct(product);
+        log.info("新增：product = {}", save);
     }
 
     @Test
     public void testFindAll() {
-        List<User> list = userMapper.findAll();
+        List<Product> list = productMapper.findAll();
         log.info("查询：list = {}", list);
     }
 
-    @Test
-    public void testQueryByUsername() {
-        String username = "123";
-        User user = userMapper.queryByUsername(username);
-        log.info("查询：user = {}", user);
-    }
 }

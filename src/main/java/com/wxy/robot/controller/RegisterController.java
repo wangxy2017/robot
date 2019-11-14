@@ -1,10 +1,11 @@
 package com.wxy.robot.controller;
 
 import com.wxy.robot.service.UserService;
-import com.wxy.robot.util.ApiResponse;
+import com.wxy.robot.core.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -28,7 +29,7 @@ public class RegisterController {
      * @return
      */
     @PostMapping
-    public ApiResponse register(String username, String password, String email) {
+    public ApiResponse register(@RequestParam String username, @RequestParam String password, @RequestParam String email) {
         boolean b = userService.saveUser(username, password, email);
         if (b) {
             return new ApiResponse(1, "注册成功", null);

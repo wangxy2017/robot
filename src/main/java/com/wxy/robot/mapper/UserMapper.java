@@ -23,5 +23,5 @@ public interface UserMapper {
     User queryByUsername(String username);
 
     @Select({"select * from t_user"})
-    List<User> queryAll();
+    List<User> findAll();
 }
